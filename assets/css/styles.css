@@ -1,5 +1,5 @@
 /*=============== FONT ===============*/
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 /*=============== VARIABLES CSS ===============*/
 :root {
@@ -31,10 +31,10 @@
   --h1-font-size: 1.5rem;
   --h2-font-size: 1.25rem;
   --h3-font-size: 1rem;
-  --normal-font-size: .938rem;
-  --small-font-size: .813rem;
-  --smaller-font-size: .75rem;
-  --tiny-font-size: .625rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+  --tiny-font-size: 0.625rem;
 
   /*========== FONT WEIGHT ==========*/
   --font-medium: 500;
@@ -54,8 +54,8 @@
     --h2-font-size: 1.5rem;
     --h3-font-size: 1.25rem;
     --normal-font-size: 1rem;
-    --small-font-size: .875rem;
-    --smaller-font-size: .813rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
   }
 }
 
@@ -81,10 +81,12 @@ textarea {
 body {
   background-color: var(--body-color);
   color: var(--text-color);
-  transition: .4s; /* for light mode animation */
+  transition: 0.4s; /* for light mode animation */
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   color: var(--title-color);
   font-weight: var(--font-semibold);
 }
@@ -128,7 +130,7 @@ img {
   padding: 4.5rem 0 1rem;
 }
 
-.section__title, 
+.section__title,
 .section__subtitle {
   text-align: center;
 }
