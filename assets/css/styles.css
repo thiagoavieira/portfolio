@@ -1,25 +1,33 @@
-/*=============== FONT ===============*/
+/*=============== GOOGLE FONTS ===============*/
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 /*=============== VARIABLES CSS ===============*/
+
 :root {
   --header-height: 3.5rem;
-
-  /*========== COLORS ==========*/
-  --first-hue: 250;
-  --sat: 66%;
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  /*
+        Purple: hsl(250, 66%, 75%)
+        Blue: hsl(207, 90%, 72%)
+        Pink: hsl(356, 66%, 75%)
+        Teal: hsl(174, 63%, 62%)
+  */
+  --first-hue: 207;
+  --sat: 90%;
   --lig: 75%;
   --second-hue: 219;
-
   --first-color: hsl(var(--first-hue), var(--sat), var(--lig));
-  --first-color-alt: hsl(var(--first-hue), var(--sat), 71%); /* -4% */
+  --first-color-alt: hsl(var(--first-hue), var(--sat), 71%);
+  /* -4% */
   --title-color: hsl(var(--second-hue), 15%, 95%);
   --text-color: hsl(var(--second-hue), 8%, 75%);
   --text-color-light: hsl(var(--second-hue), 4%, 55%);
   --body-color: hsl(var(--second-hue), 48%, 8%);
   --container-color: hsl(var(--second-hue), 32%, 12%);
-
-  /*========== FONT AND TYPOGRAPHY ==========*/
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
   --body-font: 'Poppins', sans-serif;
   --biggest-font-size: 1.75rem;
   --h1-font-size: 1.5rem;
@@ -29,18 +37,17 @@
   --small-font-size: 0.813rem;
   --smaller-font-size: 0.75rem;
   --tiny-font-size: 0.625rem;
-
-  /*========== FONT WEIGHT ==========*/
+  /*========== Font weight ==========*/
   --font-medium: 500;
   --font-semibold: 600;
-
-  /*========== Z INDEX ==========*/
+  /*========== z index ==========*/
   --z-tooltip: 10;
   --z-fixed: 100;
   --z-modal: 1000;
 }
 
-/* RESPONSIVE TYPOGRAPHY */
+/* Responsive typography */
+
 @media screen and (min-width: 968px) {
   :root {
     --biggest-font-size: 2.5rem;
@@ -54,6 +61,7 @@
 }
 
 /*=============== BASE ===============*/
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -75,7 +83,8 @@ textarea {
 body {
   background-color: var(--body-color);
   color: var(--text-color);
-  transition: 0.4s; /* for light mode animation */
+  transition: 0.4s;
+  /* for light mode animation */
 }
 
 h1,
@@ -104,7 +113,94 @@ img {
   height: auto;
 }
 
+.container {
+  margin: 0 auto !important;
+}
+
+/*=============== THEME ===============*/
+
+.change-theme {
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.change-theme:hover {
+  color: var(--first-color);
+}
+
+/*========== Variables Light theme ==========*/
+
+body.light-theme {
+  --title-color: hsl(var(--second-hue), 15%, 15%);
+  --text-color: hsl(var(--second-hue), 8%, 35%);
+  --body-color: hsl(var(--second-hue), 100%, 99%);
+  --container-color: #fff;
+}
+
+/*========== 
+    Color changes in some parts of 
+    the website, in light theme
+==========*/
+
+.light-theme .scroll-header {
+  box-shadow: 0 2px 4px hsla(0, 0%, 1%, 0.1);
+}
+
+.light-theme .nav__menu {
+  background-color: hsla(var(--second-hue), 32%, 90%, 0.8);
+}
+
+.light-theme .section__subtitle {
+  color: var(--text-color);
+}
+
+.light-theme .home__social-link {
+  box-shadow: 0 2px 8px hsla(var(--second-hue), 48%, 8%, 1);
+}
+
+.light-theme .home__social:after,
+.light-theme .footer__social-link {
+  background-color: var(--title-color);
+}
+
+.light-theme .home__social-link,
+.light-theme .home__scroll,
+.light-theme .button,
+.light-theme .button:hover,
+.light-theme .active-work,
+.light-theme .footer__title,
+.light-theme .footer__link,
+.light-theme .footer__copy {
+  color: var(--title-color);
+}
+
+.light-theme .about__box {
+  box-shadow: 0 2px 8px hsla(var(--second-hue), 48%, 8%, 0.1);
+}
+
+.light-theme .skills__content,
+.light-theme .services__card,
+.light-theme .work__card,
+.light-theme .testimonial__card,
+.light-theme .contact__card {
+  box-shadow: 0 2px 16px hsla(var(--second-hue), 48%, 8%, 0.1);
+}
+
+.light-theme::-webkit-scrollbar {
+  background-color: hsl(var(--second-hue), 8%, 66%);
+}
+
+.light-theme::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--second-hue), 8%, 54%);
+}
+
+.light-theme::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--second-hue), 8%, 44%);
+}
+
 /*=============== REUSABLE CSS CLASSES ===============*/
+
 .container {
   max-width: 968px;
   margin-left: 1rem;
@@ -141,14 +237,17 @@ img {
   color: var(--text-color-light);
 }
 
-/*=============== HEADER AND NAV ===============*/
-.header {
+/*=============== HEADER & NAV ===============*/
+
+header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: var(--body-color);
   z-index: var(--z-fixed);
+  transition: 0.4s;
+  /* for light mode animation */
 }
 
 .nav {
@@ -176,6 +275,8 @@ img {
   border-radius: 4rem;
   padding: 1rem 2.25rem;
   backdrop-filter: blur(10px);
+  transition: 0.4s;
+  /* for light mode animation */
 }
 
 .nav__list {
@@ -193,6 +294,7 @@ img {
 }
 
 /* ACTIVE LINK */
+
 .active-link {
   background: linear-gradient(
     180deg,
@@ -200,13 +302,17 @@ img {
     hsla(var(--first-hue), var(--sat), var(--lig), 0.2)
   );
   box-shadow: 0 0 16px hsla(var(--first-hue), var(--sat), var(--lig), 0.4);
+  color: var(--title-color);
 }
+
 /*=============== CHANGE BACKGROUND HEADER ===============*/
+
 .scroll-header {
   box-shadow: 0 4px 4px hsla(0, 0%, 4%, 0.3);
 }
 
 /*=============== HOME ===============*/
+
 .home__container {
   position: relative;
   row-gap: 4.5rem;
@@ -239,7 +345,7 @@ img {
 }
 
 .home__img {
-  width: 160px;
+  width: 250px;
 }
 
 .home__handle {
@@ -289,11 +395,11 @@ img {
 }
 
 .home__social-link:hover {
-  background: var(--first-color);
+  background-color: var(--first-color);
   color: #fff;
 }
 
-.home__social::after {
+.home__social:after {
   content: '';
   width: 32px;
   height: 2px;
@@ -320,6 +426,7 @@ img {
 }
 
 /*=============== BUTTONS ===============*/
+
 .button {
   display: inline-block;
   background-color: var(--first-color);
@@ -342,6 +449,7 @@ img {
 }
 
 /*=============== ABOUT ===============*/
+
 .about__container {
   row-gap: 2.5rem;
 }
@@ -349,16 +457,16 @@ img {
 .about__img {
   width: 220px;
   border-radius: 1.5rem;
-  justify-content: center;
+  justify-self: center;
 }
 
-.about_data {
+.about__data {
   text-align: center;
 }
 
 .about__info {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
   margin-bottom: 2rem;
 }
@@ -388,6 +496,7 @@ img {
 }
 
 /*=============== SKILLS ===============*/
+
 .skills__container {
   row-gap: 2rem;
   padding-top: 1rem;
@@ -415,7 +524,7 @@ img {
 
 .skills__group {
   display: grid;
-  align-items: flex-start;
+  align-content: flex-start;
   row-gap: 1rem;
 }
 
@@ -437,4 +546,111 @@ img {
 
 .skills__level {
   font-size: var(--tiny-font-size);
+}
+
+/*=============== SERVICES ===============*/
+.services__container {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding-top: 1rem;
+}
+
+.services__card {
+  background-color: var(--container-color);
+  padding: 3rem 1.5rem 1.5rem;
+  border-radius: 1rem;
+}
+
+.services__title {
+  font-size: var(--h3-font-size);
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.services__button {
+  color: var(--first-color);
+  font-size: var(--small-font-size);
+  display: flex;
+  align-items: center;
+  column-gap: 0.25rem;
+  cursor: pointer;
+}
+
+.services__button:hover .services__icon {
+  transform: translateX(0.25rem);
+}
+
+.services__icon {
+  font-size: 1rem;
+  transition: 0.4s;
+}
+/* Services modal */
+.services__modal {
+  position: fixed;
+  inset: 0;
+  background-color: hsla(var(--second-hue), 28%, 16%, 0.7);
+  padding: 2rem 1rem;
+  display: grid;
+  place-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.4s;
+  z-index: var(--z-modal);
+}
+
+.services__modal-content {
+  position: relative;
+  background-color: var(--body-color);
+  padding: 4.5rem 1.5rem 2.5rem;
+  border-radius: 1.5rem;
+}
+
+.services__modal-title,
+.services__modal-description {
+  text-align: center;
+}
+
+.services__modal-title {
+  font-size: var(--h3-font-size);
+  color: var(--first-color);
+  margin-bottom: 1rem;
+}
+
+.services__modal-description {
+  font-size: var(--small-font-size);
+  margin-bottom: 2rem;
+}
+
+.services__modal-list {
+  display: grid;
+  row-gap: 0.75rem;
+}
+
+.services__modal-item {
+  display: flex;
+  align-items: flex-start;
+  column-gap: 0.5rem;
+}
+
+.services__modal-icon {
+  font-size: 1.5rem;
+  color: var(--first-color);
+}
+
+.services__modal-info {
+  font-size: var(--small-font-size);
+}
+
+.services__modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--first-color);
+  cursor: pointer;
+}
+/*Active modal*/
+.active-modal {
+  opacity: 1;
+  visibility: visible;
 }
